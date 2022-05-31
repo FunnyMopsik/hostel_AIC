@@ -1,0 +1,133 @@
+﻿<Window x:Class="Hostel.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Hostel"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="1080" Width="1920" WindowState="Maximized">
+    <Grid>
+        <ComboBox x:Name="LanguageComboBox" Text="{Binding SelectedItem.Language,Mode=OneWay}" Width="150" Height="35" RenderTransformOrigin="0.747,-0.28"  >
+            <ComboBox Height="21" Width="18"/>
+        </ComboBox>
+        <TabControl>
+            <TabItem Header="Room">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="5*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <ListView x:Name="RoomsItemList">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Id" Width="150" DisplayMemberBinding="{Binding Id}" />
+                                <GridViewColumn Header="Number" Width="150" DisplayMemberBinding="{Binding Number}"/>
+                                <GridViewColumn Header="Value" Width="150" DisplayMemberBinding="{Binding Value}"/>
+                                <GridViewColumn Header="Amount" Width="150" DisplayMemberBinding="{Binding Amount}"/>
+                                <GridViewColumn Header="Floor" Width="150" DisplayMemberBinding="{Binding Floor}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+
+                    <Button Content="Create" Grid.Row="2" Width="200" Height="70" HorizontalAlignment="Left" Margin="100,0,0,0" FontSize="20" Background="#FFAEF3A7" Click="CreateRoom"/>
+                    <Button Content="Update" Grid.Row="2" Width="200" Height="70" HorizontalAlignment="Center" Margin="0,0,0,0" FontSize="20" Background="#FFF9F9A4" Click="UpdateRoom"/>
+                    <Button Content="Delete" Grid.Row="2" Width="200" Height="70" HorizontalAlignment="Right" Margin="0,0,100,0" FontSize="20" Background="#FFFD8080" Click="DeleteRoom"/>
+
+                    <Grid Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Width="Auto">
+                        <Label Content="Number" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Center" FontSize="14"/>
+                        <TextBox x:Name="NumberTextBox" Text="{Binding SelectedItem.Number, ElementName=RoomsItemList, Mode=OneWay}" HorizontalAlignment="Left"  Margin="70,0,0,0" Width="150" Height="35" VerticalAlignment="Center"/>
+                        <Label Content="Value" HorizontalAlignment="Left" Margin="250,0,0,0" VerticalAlignment="Center" FontSize="14"/>
+                        <TextBox x:Name="ValueTextBox" Text="{Binding SelectedItem.Value, ElementName=RoomsItemList, Mode=OneWay}" HorizontalAlignment="Left" Margin="330,0,0,0" Width="150" Height="35" VerticalAlignment="Center"/>
+                        <Label Content="Amount" HorizontalAlignment="Left" Margin="500,0,0,0" VerticalAlignment="Center" FontSize="14"/>
+                        <TextBox x:Name="AmountTextBox" Text="{Binding SelectedItem.Amount, ElementName=RoomsItemList, Mode=OneWay}" HorizontalAlignment="Left" Margin="570,0,0,0" Width="150" Height="35" VerticalAlignment="Center"/>
+                        <Label Content="Floor" HorizontalAlignment="Left" Margin="750,0,0,0" VerticalAlignment="Center" FontSize="14"/>
+                        <TextBox x:Name="FloorTextBox" Text="{Binding SelectedItem.Floor, ElementName=RoomsItemList, Mode=OneWay}" HorizontalAlignment="Left" Margin="830,0,0,0" Width="150" Height="35" VerticalAlignment="Center"/>
+                    </Grid>
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="Privilege">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="3*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <ListView x:Name="PrivilegesItemList">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Id" Width="150" DisplayMemberBinding="{Binding Id}" />
+                                <GridViewColumn Header="Number" Width="150" DisplayMemberBinding="{Binding Type}"/>
+                                <GridViewColumn Header="Value" Width="150" DisplayMemberBinding="{Binding Discount}"/>
+                                
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+
+                    <Button Content="Create" Grid.Row="2" Width="200" Height="70" HorizontalAlignment="Left" Margin="100,0,0,0" FontSize="20" Background="#FFAEF3A7" Click="CreatePrivilege"/>
+                    <Button Content="Update" Grid.Row="2" Width="200" Height="70" HorizontalAlignment="Center" Margin="0,0,0,0" FontSize="20" Background="#FFF9F9A4" Click="UpdatePrivilege"/>
+                    <Button Content="Delete" Grid.Row="2" Width="200" Height="70" HorizontalAlignment="Right" Margin="0,0,100,0" FontSize="20" Background="#FFFD8080" Click="DeletePrivrlege"/>
+
+                    <Grid Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Width="Auto">
+                        <Label Content="Type" HorizontalAlignment="Left" Margin="250,0,0,0" VerticalAlignment="Center" FontSize="14"/>
+                        <TextBox x:Name="TypeTextBox" Text="{Binding SelectedItem.Type, ElementName=PrivilegesItemList, Mode=OneWay}" HorizontalAlignment="Left" Margin="330,0,0,0" Width="150" Height="35" VerticalAlignment="Center"/>
+                        <Label Content="Discount" HorizontalAlignment="Left" Margin="500,0,0,0" VerticalAlignment="Center" FontSize="14"/>
+                        <TextBox x:Name="DiscountTextBox" Text="{Binding SelectedItem.Discount, ElementName=PrivilegesItemList, Mode=OneWay}" HorizontalAlignment="Left" Margin="570,0,0,0" Width="150" Height="35" VerticalAlignment="Center"/>
+                        </Grid>
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="Student" Margin="-2,-2,-2,0">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="5*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <ListView x:Name="StudentsItemList" SelectionChanged="StudentsItemList_SelectionChanged">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Id" Width="150" DisplayMemberBinding="{Binding Id}" />
+                                <GridViewColumn Header="Number" Width="150" DisplayMemberBinding="{Binding Name}"/>
+                                <GridViewColumn Header="Value" Width="150" DisplayMemberBinding="{Binding Address}"/>
+                                <GridViewColumn Header="Amount" Width="150" DisplayMemberBinding="{Binding Group}"/>
+                                <GridViewColumn Header="Gender" Width="150" DisplayMemberBinding="{Binding Gender}"/>
+                                <GridViewColumn Header="Number Of Room" Width="150" DisplayMemberBinding="{Binding Room.Number}"/>
+                                <GridViewColumn Header="Type Of Privilege" Width="150" DisplayMemberBinding="{Binding Privilege.Type}"/>
+                                
+
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+
+                    <Button Content="Create" Grid.Row="2" Width="200" Height="70" HorizontalAlignment="Left" Margin="100,0,0,0" FontSize="20" Background="#FFAEF3A7" Click="CreateStudent"/>
+                    <Button Content="Update" Grid.Row="2" Width="200" Height="70" HorizontalAlignment="Center" Margin="0,0,0,0" FontSize="20" Background="#FFF9F9A4" Click="UpdateStudent"/>
+                    <Button Content="Delete" Grid.Row="2" Width="200" Height="70" HorizontalAlignment="Right" Margin="0,0,100,0" FontSize="20" Background="#FFFD8080" Click="DeleteStudent"/>
+
+
+                    <Grid Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Width="Auto">
+                        <Label Content="Name" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Center" FontSize="14"/>
+                        <TextBox x:Name="NameTextBox" Text="{Binding SelectedItem.Name, ElementName= StudentsItemList, Mode=OneWay}" HorizontalAlignment="Left"  Margin="70,0,0,0" Width="150" Height="35" VerticalAlignment="Center"/>
+
+                        <Label Content="Address" HorizontalAlignment="Left" Margin="250,0,0,0" VerticalAlignment="Center" FontSize="14"/>
+                        <TextBox x:Name="AddressTextBox" Text="{Binding SelectedItem.Address, ElementName= StudentsItemList, Mode=OneWay}" HorizontalAlignment="Left" Margin="330,0,0,0" Width="150" Height="35" VerticalAlignment="Center"/>
+
+                        <Label Content="Group" HorizontalAlignment="Left" Margin="500,0,0,0" VerticalAlignment="Center" FontSize="14"/>
+                        <TextBox x:Name="GroupTextBox" Text="{Binding SelectedItem.Group, ElementName= StudentsItemList, Mode=OneWay}" HorizontalAlignment="Left" Margin="570,0,0,0" Width="150" Height="35" VerticalAlignment="Center"/>
+
+                        <Label Content="Gender" HorizontalAlignment="Left" Margin="750,0,0,0" VerticalAlignment="Center" FontSize="14"/>
+                        <ComboBox x:Name="GenderComboBox" Text="{Binding SelectedItem.Gender, ElementName=StudentsItemList, Mode=OneWay}" Width="150" Height="35" VerticalAlignment="Center" Margin="830,0,0,0" HorizontalAlignment="Left"  />
+
+                        <Label Content="Room" HorizontalAlignment="Left" Margin="1000,0,0,0" VerticalAlignment="Center" FontSize="14"/>
+                        <ComboBox x:Name="RoomComboBox" Text="{Binding SelectedItem.Room.Number, ElementName=StudentsItemList, Mode=OneWay}" Width="150" Height="35" VerticalAlignment="Center" Margin="1070,0,0,0" DisplayMemberPath="Number" SelectedValuePath="Id" HorizontalAlignment="Left"  />
+
+                        <Label Content="Privilege" HorizontalAlignment="Left" Margin="1250,0,0,0" VerticalAlignment="Center" FontSize="14"/>
+                        <ComboBox x:Name="PrivilegeComboBox" Text="{Binding SelectedItem.Privilege.Type, ElementName=StudentsItemList, Mode=OneWay}" Width="150" Height="35" VerticalAlignment="Center" Margin="1330,0,0,0" DisplayMemberPath="Type" SelectedValuePath="Id" HorizontalAlignment="Left"  />
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <ComboBox Width="120"/>
+        </TabControl>
+    </Grid>
+</Window>

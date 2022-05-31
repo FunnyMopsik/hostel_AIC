@@ -1,0 +1,9 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\endob\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\endob\\.nuget\\packages",
+      "D:\\visual studio\\sdk\\NuGetPackages"
+    ]
+  }
+}
